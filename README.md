@@ -1,51 +1,46 @@
-# 🌡️ Real-Time Environmental Monitoring System
+# Real-Time Environmental Monitoring System
+**Versi:** ESP32 IoT  
+**Lisensi:** MIT License
 
-<div align="center">
+Sistem monitoring lingkungan real-time berbasis ESP32 dengan dashboard web interaktif
 
-![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
-![ESP32](https://img.shields.io/badge/ESP32-Compatible-green.svg)
-![IoT](https://img.shields.io/badge/IoT-Project-orange.svg)
-![License](https://img.shields.io/badge/license-MIT-lightgrey.svg)
+**Demo** • **Fitur** • **Instalasi** • **Penggunaan** • **Hardware** • **Troubleshooting**
 
-**Sistem monitoring lingkungan real-time berbasis ESP32 dengan dashboard web interaktif**
+## Deskripsi Proyek
 
-[Demo](#demo) • [Fitur](#-fitur) • [Instalasi](#-instalasi) • [Penggunaan](#-penggunaan) • [Hardware](#-hardware) • [Troubleshooting](#-troubleshooting)
+Real-Time Environmental Monitoring System adalah sistem IoT yang dirancang untuk memantau parameter lingkungan seperti suhu, kelembaban, getaran, dan intensitas cahaya secara real-time. Sistem ini menggunakan mikrokontroler ESP32 yang terhubung ke berbagai sensor dan menampilkan data melalui dashboard web yang dapat diakses dari browser mana pun.
 
-</div>
+## Tujuan
 
-## 📋 Deskripsi Proyek
-
-**Real-Time Environmental Monitoring System** adalah sistem IoT yang dirancang untuk memantau parameter lingkungan seperti suhu, kelembaban, getaran, dan intensitas cahaya secara real-time. Sistem ini menggunakan mikrokontroler ESP32 yang terhubung ke berbagai sensor dan menampilkan data melalui dashboard web yang dapat diakses dari browser mana pun.
-
-### 🎯 Tujuan
 - Memantau kondisi lingkungan secara real-time
 - Memberikan visualisasi data yang intuitif
 - Sistem yang mudah diimplementasikan dan scalable
 - Antarmuka yang responsive untuk berbagai perangkat
 
-## ✨ Fitur
+## Fitur
 
-### 🔍 Monitoring Real-Time
-- **🌡️ Suhu**: Monitoring suhu ambient dengan sensor DHT11
-- **💧 Kelembaban**: Pengukuran kelembaban udara relatif
-- **📳 Getaran**: Deteksi getaran atau vibrasi lingkungan
-- **💡 Cahaya**: Monitoring intensitas cahaya dengan LDR
+### Monitoring Real-Time
+- **Suhu**: Monitoring suhu ambient dengan sensor DHT11
+- **Kelembaban**: Pengukuran kelembaban udara relatif
+- **Getaran**: Deteksi getaran atau vibrasi lingkungan
+- **Cahaya**: Monitoring intensitas cahaya dengan LDR
 
-### 🖥️ Dashboard Web
-- **📊 Grafik Real-Time**: Visualisasi data dengan Chart.js
-- **🎨 Responsive Design**: Tampilan optimal di desktop dan mobile
-- **🔄 Auto-Refresh**: Update data otomatis setiap 2 detik
-- **📱 User-Friendly**: Antarmuka intuitif dan mudah digunakan
+### Dashboard Web
+- **Grafik Real-Time**: Visualisasi data dengan Chart.js
+- **Responsive Design**: Tampilan optimal di desktop dan mobile
+- **Auto-Refresh**: Update data otomatis setiap 2 detik
+- **User-Friendly**: Antarmuka intuitif dan mudah digunakan
 
-### 🔧 Teknologi
+### Teknologi
 - **ESP32**: Mikrokontroler dengan WiFi built-in
 - **Web Server**: HTTP server embedded pada ESP32
 - **REST API**: Endpoint JSON untuk data sensor
 - **Chart.js**: Visualisasi data real-time
 
-## 🛠️ Hardware Requirements
+## Persyaratan Hardware
 
 ### Komponen yang Dibutuhkan
+
 | Komponen | Jumlah | Keterangan |
 |----------|--------|------------|
 | ESP32 Development Board | 1 | Mikrokontroler utama |
@@ -54,57 +49,60 @@
 | LDR (Light Dependent Resistor) | 1 | Sensor cahaya |
 | Resistor 10kΩ | 1 | Pull-up untuk LDR |
 | Breadboard | 1 | Tempat merangkai |
-| Kabel Jumper |若干 | Koneksi antar komponen |
+| Kabel Jumper | Secukupnya | Koneksi antar komponen |
 
 ### Diagram Rangkaian
 
+**ESP32 Pinout:**
 ```
-ESP32 Pinout:
-├── D4  → DATA DHT11
-├── D2  → OUT Sensor Getar  
-├── 34  → LDR (dengan resistor 10kΩ ke GND)
+├── GPIO 4 → DATA DHT11
+├── GPIO 2 → OUT Sensor Getar  
+├── GPIO 34 → LDR (dengan resistor 10kΩ ke GND)
 ├── 3.3V → VCC semua sensor
-└── GND  → Ground semua sensor
+└── GND → Ground semua sensor
 ```
 
 **Skema Koneksi:**
+
+**DHT11:**
 ```
-DHT11:
-  VCC   → 3.3V
-  GND   → GND
-  DATA  → GPIO 4
-
-Sensor Getar:
-  VCC   → 3.3V
-  GND   → GND
-  OUT   → GPIO 2
-
-LDR:
-  ├── Kaki 1 → 3.3V
-  └── Kaki 2 → GPIO 34 + Resistor 10kΩ → GND
+VCC   → 3.3V
+GND   → GND
+DATA  → GPIO 4
 ```
 
-## 💻 Software Requirements
+**Sensor Getar:**
+```
+VCC   → 3.3V
+GND   → GND
+OUT   → GPIO 2
+```
+
+**LDR:**
+```
+Kaki 1 → 3.3V
+Kaki 2 → GPIO 34 + Resistor 10kΩ → GND
+```
+
+## Persyaratan Software
 
 ### Software Development
-- **Arduino IDE** (versi 1.8.x atau lebih baru)
-- **ESP32 Board Package**
-- **Library yang Diperlukan**
+- Arduino IDE (versi 1.8.x atau lebih baru)
+- ESP32 Board Package
 
-### Library Arduino
+### Library yang Diperlukan
 Install melalui Arduino IDE Library Manager:
-```cpp
+
 1. WiFi (bawaan Arduino)
 2. WebServer (bawaan ESP32) 
-3. DHT Sensor Library by Adafruit
-4. ArduinoJson by Benoit Blanchon
-```
+3. DHT Sensor Library oleh Adafruit
+4. ArduinoJson oleh Benoit Blanchon
 
-## 📥 Instalasi
+## Instalasi
 
 ### 1. Persiapan Development Environment
-
 **Install ESP32 Board Package:**
+
 1. Buka Arduino IDE
 2. File → Preferences
 3. Tambahkan URL berikut di "Additional Board Manager URLs":
@@ -114,16 +112,16 @@ Install melalui Arduino IDE Library Manager:
 4. Tools → Board → Board Manager → cari "ESP32" → Install
 
 ### 2. Install Library
-
 **Melalui Library Manager:**
+
 1. Sketch → Include Library → Manage Libraries
 2. Cari dan install library berikut:
    - "DHT sensor library" oleh Adafruit
    - "ArduinoJson" oleh Benoit Blanchon
 
 ### 3. Konfigurasi Kode
+Edit konfigurasi WiFi:
 
-**Edit konfigurasi WiFi:**
 ```cpp
 // Pada file utama, ubah bagian berikut:
 const char* ssid = "NAMA_WIFI_ANDA";
@@ -131,13 +129,12 @@ const char* password = "PASSWORD_WIFI_ANDA";
 ```
 
 ### 4. Upload Kode
-
-1. Pilih board: **ESP32 Dev Module**
+1. Pilih board: ESP32 Dev Module
 2. Pilih port COM yang sesuai
 3. Upload kode ke ESP32
 4. Buka Serial Monitor (115200 baud) untuk monitoring
 
-## 🚀 Penggunaan
+## Penggunaan
 
 ### 1. Inisialisasi Sistem
 1. Hubungkan semua komponen sesuai diagram rangkaian
@@ -148,17 +145,17 @@ const char* password = "PASSWORD_WIFI_ANDA";
 1. Dari Serial Monitor, catat IP address yang ditampilkan
 2. Buka browser web (Chrome, Firefox, dll.)
 3. Akses alamat: `http://[IP_ADDRESS_ESP32]`
-
-**Contoh:** `http://192.168.1.100`
+   Contoh: `http://192.168.1.100`
 
 ### 3. Monitoring Data
 - **Data Real-Time**: Nilai sensor terupdate otomatis setiap 2 detik
 - **Grafik Trend**: Visualisasi data historis 20 titik terakhir
 - **Status Sistem**: Indikator online/offline
 
-## 📊 Spesifikasi Teknis
+## Spesifikasi Teknis
 
-### Sensor Specifications
+### Spesifikasi Sensor
+
 | Sensor | Range | Akurasi | Update Interval |
 |--------|-------|---------|-----------------|
 | DHT11 (Suhu) | 0-50°C | ±2°C | 2 detik |
@@ -166,15 +163,18 @@ const char* password = "PASSWORD_WIFI_ANDA";
 | Sensor Getar | Digital (0/1) | - | Real-time |
 | LDR | 0-4095 | - | Real-time |
 
-### System Specifications
-- **Microcontroller**: ESP32-WROOM-32
-- **WiFi**: 802.11 b/g/n (2.4 GHz)
-- **Power Supply**: 5V via USB atau 3.3V external
-- **Current Consumption**: ~80mA (normal operation)
-- **Web Server**: HTTP port 80
-- **Data Update**: 2000ms interval
+### Spesifikasi Sistem
 
-## 🗂️ Struktur Project
+| Parameter | Spesifikasi |
+|-----------|-------------|
+| Microcontroller | ESP32-WROOM-32 |
+| WiFi | 802.11 b/g/n (2.4 GHz) |
+| Power Supply | 5V via USB atau 3.3V external |
+| Current Consumption | ~80mA (normal operation) |
+| Web Server | HTTP port 80 |
+| Data Update | 2000ms interval |
+
+## Struktur Project
 
 ```
 real-time-environment-monitoring/
@@ -191,15 +191,15 @@ real-time-environment-monitoring/
 └── README.md                        # Dokumentasi ini
 ```
 
-## 🌐 API Endpoints
+## API Endpoints
 
 Sistem menyediakan endpoint berikut:
 
-### `GET /`
+### GET /
 - **Deskripsi**: Dashboard web utama
 - **Response**: HTML page
 
-### `GET /sensor`
+### GET /sensor
 - **Deskripsi**: Data sensor dalam format JSON
 - **Response**:
 ```json
@@ -211,11 +211,11 @@ Sistem menyediakan endpoint berikut:
 }
 ```
 
-### `GET /data`
+### GET /data
 - **Deskripsi**: Data sensor format JSON (legacy)
 - **Response**: JSON string
 
-## 🔧 Troubleshooting
+## Troubleshooting
 
 ### Masalah Umum dan Solusi
 
@@ -227,22 +227,22 @@ Sistem menyediakan endpoint berikut:
 | Data tidak update | Koneksi jaringan | Restart ESP32 |
 | Sensor cahaya tidak akurat | Kalibrasi diperlukan | Adjust nilai mapping LDR |
 
-### Debugging Steps
-1. **Buka Serial Monitor** (115200 baud)
-2. **Periksa pesan status** koneksi WiFi
-3. **Verifikasi IP address** yang ditampilkan
-4. **Test koneksi** dengan ping ke IP ESP32
-5. **Periksa kabel** dan koneksi hardware
+### Langkah Debugging
+1. Buka Serial Monitor (115200 baud)
+2. Periksa pesan status koneksi WiFi
+3. Verifikasi IP address yang ditampilkan
+4. Test koneksi dengan ping ke IP ESP32
+5. Periksa kabel dan koneksi hardware
 
-## 📈 Extensions & Improvements
+## Pengembangan dan Peningkatan
 
 ### Potensi Pengembangan
-- [ ] **Database Storage**: Integrasi dengan MySQL/InfluxDB
-- [ ] **Mobile App**: Aplikasi Android/iOS companion
-- [ ] **Alert System**: Notifikasi via Telegram/Email
-- [ ] **Multi-Node**: Monitoring beberapa lokasi
-- [ ] **Data Export**: Export data ke CSV/Excel
-- [ ] **OTA Updates**: Update firmware wireless
+- **Database Storage**: Integrasi dengan MySQL/InfluxDB
+- **Mobile App**: Aplikasi Android/iOS companion
+- **Alert System**: Notifikasi via Telegram/Email
+- **Multi-Node**: Monitoring beberapa lokasi
+- **Data Export**: Export data ke CSV/Excel
+- **OTA Updates**: Update firmware wireless
 
 ### Sensor Tambahan
 - Sensor kualitas udara (MQ-135)
@@ -250,42 +250,32 @@ Sistem menyediakan endpoint berikut:
 - Sensor suara (Sound Sensor)
 - Sensor hujan (Rain Sensor)
 
-## 🤝 Kontribusi
+## Kontribusi
 
 Kontribusi dipersilakan! Untuk berkontribusi:
 
 1. Fork project ini
-2. Buat feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
-4. Push ke branch (`git push origin feature/AmazingFeature`)
+2. Buat feature branch (`git checkout -b feature/FiturAnda`)
+3. Commit perubahan (`git commit -m 'Tambahkan FiturAnda'`)
+4. Push ke branch (`git push origin feature/FiturAnda`)
 5. Buat Pull Request
 
-## 📄 Lisensi
+## Lisensi
 
-Distributed under MIT License. Lihat `LICENSE` untuk informasi lebih lanjut.
+Didistribusikan di bawah Lisensi MIT. Lihat LICENSE untuk informasi lebih lanjut.
 
-## 👨‍💻 Developer
+## Developer
 
 **Tim Pengembang**
 - Lead Developer & IoT Specialist
 
----
-
-<div align="center">
-
-**⭐ Jika project ini membantu Anda, jangan lupa beri bintang!**
-
-*Dikembangkan dengan ❤️ untuk komunitas IoT Indonesia*
-
-</div>
-
-## 🔗 Links Berguna
+## Tautan Berguna
 
 - [ESP32 Official Documentation](https://docs.espressif.com/projects/esp-idf/en/latest/esp32/)
 - [Arduino IDE Download](https://www.arduino.cc/en/software)
 - [DHT11 Sensor Datasheet](https://www.mouser.com/datasheet/2/758/DHT11-Technical-Data-Sheet-Translated-Version-1143054.pdf)
-- [Chart.js Documentation](https://www.chartjs.org/docs/)
+- [Chart.js Documentation](https://www.chartjs.org/docs/latest/)
 
----
+## Penafian
 
-**⚠️ Disclaimer**: Project ini ditujukan untuk tujuan edukasi dan prototyping. Untuk implementasi production, pertimbangkan aspek keamanan dan reliability tambahan.
+Project ini ditujukan untuk tujuan edukasi dan prototyping. Untuk implementasi production, pertimbangkan aspek keamanan dan reliability tambahan.
